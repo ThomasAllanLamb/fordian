@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  web:
+    image: lambyte/lap
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      #- ./src/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+
+    links:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - ./data:/var/lib/mysql
