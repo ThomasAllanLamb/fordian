@@ -2,12 +2,14 @@ version: "2"
 
 services:
   web:
-    image: lambyte/lap
+    image: lambyte/lapx
     ports:
       - "80:80"
     volumes:
       - ./src:/var/www/html
       #- ./src/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+    environment:
+      XDEBUG_CONFIG: remote_host=
 
     links:
       - db
