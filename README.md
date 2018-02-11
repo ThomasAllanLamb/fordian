@@ -4,7 +4,7 @@ docker-compose up
 
 in hosts:
 ```
-127.0.0.1 docker-lanp.local
+127.0.0.1 fordian.local
 ```
 
-visit [http://docker-lanp.local:8080]
+visit [http://fordian.local:8080]

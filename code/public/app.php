@@ -5,21 +5,29 @@
 
   $router = new Router();
 
-  $router->route("hob", function () {
-    echo "success";
-  });
-
-  $router->route("users/", function ($params) {
-    echo "all users";
-    echo "params";
+  $router->route("item/:id", 'GET', function ($params) {
+    echo "get item<br>";
+    echo "params<br>";
     print_r($params);
   });
 
-  $router->route("users/:id", function ($params) {
-    echo "one user";
-    echo "params";
+  $router->route("item", 'POST', function ($params) {
+    echo "post item<br>";
+    echo "params<br>";
     print_r($params);
-  });  
+  });
 
-  $router->matchCurrentRequest();
+  $router->route("item/:id", 'PUT', function ($params) {
+    echo "put item<br>";
+    echo "params<br>";
+    print_r($params);
+  });
+
+  $router->route("item/:id", 'DELETE', function ($params) {
+    echo "delete item<br>";
+    echo "params<br>";
+    print_r($params);
+  });
+
+  $router->request($_GET['route'], $_SERVER['REQUEST_METHOD']);
 ?>

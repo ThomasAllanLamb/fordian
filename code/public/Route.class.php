@@ -9,8 +9,9 @@
     //array of parameter names. inferred from $path
     private $parameters;
     private $f;
+    private $requestMethod;
 
-    public function __construct ($path, $f) {
+    public function __construct ($path, $requestMethod, $f) {
       $path = trim($path, "/");
       $pathArgs = explode("/", $path);
       //pathArgs is an array of the path elements that came in. None of them contain slashes.
@@ -41,12 +42,12 @@
       $this->path = path;
 
       $this->f = $f;
+
+      $this->requestMethod = $requestMethod;
     }
 
-    public function isMatch ($path) {
-      print_r($this->regex);
-      echo "\n";
-      if (preg_match($this->regex, $path)) {
+    public function isMatch ($path, $requestMethod) {
+      if ($this->requestMethod === $requestMethod && preg_match($this->regex, $path)) {
         return true;
       }
       else
