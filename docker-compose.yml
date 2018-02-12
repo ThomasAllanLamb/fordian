@@ -20,6 +20,7 @@ services:
         image: mysql
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: example
+            MYSQL_DATABASE: fordian
         volumes:
             - ./data:/var/lib/mysql
+            - ./code/db-init.sql:/docker-entrypoint-initdb.d/db-init.sql
